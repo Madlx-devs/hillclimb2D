@@ -34,4 +34,9 @@ public class ImageLoader {
         }
         return image;
     }
+    public  static BufferedImage[] loadStripes(String filename, int length){
+       BufferedImage[] images= new BufferedImage[length];
+       //TODO Image Processing
+       return images;
+    }
 }

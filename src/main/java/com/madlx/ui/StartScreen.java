@@ -8,10 +8,8 @@ import java.awt.image.BufferedImage;
 import static com.madlx.assets.resources.ImageLoader.loadImage;
 
 
-public class StartScreen extends JPanel {
-    private final int pWidth=1080;
-    private final int pHeight=560;
-    private  BufferedImage image;
+public class StartScreen extends JPanel implements BaseUi {
+    private final BufferedImage  image;
     public StartScreen(){
         image= loadImage("loadScreen.png");
         this.setPreferredSize(new Dimension(pWidth,pHeight));

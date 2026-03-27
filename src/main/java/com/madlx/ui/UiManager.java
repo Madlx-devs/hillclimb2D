@@ -2,28 +2,38 @@ package com.madlx.ui;
 
 import com.madlx.core.GameState;
 
-/**
- * UiManager is responsible for handling and coordinating
- * different UI screens in the application (e.g., menu, gameplay,
- * pause screen, settings, etc.).
-
- * It uses the current GameState to determine which screen
- * should be active and manages transitions between screens.
- */
 public class UiManager {
 
-    /**
-     * TODO:
-     * Implement logic to manage different UI screens based on the current GameState.
+   private GameState state = GameState.START_SCREEN;
 
-     * Suggested responsibilities:
-     * - Switch between screens (e.g. start Screen, Main Menu, Game, Pause, Game Over).
-     * - Initialize and dispose UI components when transitioning.
-     * - Handle rendering delegation to the active screen.
-     * - Handle input routing to the current UI screen.
+    public void updateUI() {
+        switch (state) {
+            case START_SCREEN:
+                //TODO : logic to render start screen
+                System.out.println("Start Screen");
+                break;
+            case MENU:
+                //TODO : logic to render menu screen
+                System.out.println("Menu Screen");
+                break;
 
-     * Example approach:
-     * - Use a switch-case or state pattern based on GameState.
-     * - Maintain a reference to the currently active screen.
-     */
+            case GAME:
+               //TODO : logic to render game screen
+                break;
+
+            case PAUSED:
+                //TODO : logic to render paused screen
+                System.out.println("Paused Screen");
+                break;
+
+            case GAME_OVER:
+                //TODO : logic to render gameOver screen
+                System.out.println("Game Over Screen");
+                break;
+            default:
+        }
+    }
+    private void loadUi(){
+
+    }
 }
