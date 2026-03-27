@@ -1,4 +1,4 @@
 package com.madlx.core;
 
-public class Gamestate {
+public class GameLoop {
 }
