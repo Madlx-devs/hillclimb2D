@@ -1,0 +1,19 @@
+//Ui screens
+loadscreen.png
+menuScreen.png
+
+// terrain
+classic.png
+highway.png
+rollercoaster.png
+
+// Cars
+jeep.png
+car.png
+bike.png
+
+//coins
+coin.png
+
+//fuel
+//fuel.png
