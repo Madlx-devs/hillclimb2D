@@ -1,4 +1,9 @@
 package com.madlx.core;
 
-public class GameState {
+public enum GameState {
+    MENU,
+    GAME,
+    GAME_OVER,
+    PAUSED,
+    START_SCREEN
 }
