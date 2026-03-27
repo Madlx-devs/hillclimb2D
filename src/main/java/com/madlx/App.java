@@ -44,7 +44,7 @@ public class App
         window.setResizable(false);
         StartScreen startScreen= new StartScreen();
         MenuScreen menuScreen = new MenuScreen();
-        window.add(startScreen);
+       // window.add(startScreen);
         window.add(menuScreen);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
