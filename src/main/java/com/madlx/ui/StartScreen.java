@@ -1,17 +1,18 @@
 package com.madlx.ui;
 
+import com.madlx.assets.resources.ResourceManager;
+import com.madlx.assets.resources.VisualAssetLoader;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
-import static com.madlx.assets.resources.ImageLoader.loadImage;
-
-
 public class StartScreen extends JPanel implements BaseUi {
     private final BufferedImage  image;
     public StartScreen(){
-        image= loadImage("loadScreen.png");
+       image= VisualAssetLoader.getInstance().getAssets().get("loadscreen.png");
         this.setPreferredSize(new Dimension(pWidth,pHeight));
         this.requestFocusInWindow();
         this.setDoubleBuffered(true);
