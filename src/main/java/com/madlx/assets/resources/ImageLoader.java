@@ -12,6 +12,8 @@ import java.util.Objects;
  * the resource folder.
  */
 public class ImageLoader {
+
+    static BufferedImage image;
     /**
      * Loads an image from the resources/images directory.
      *
@@ -26,11 +28,11 @@ public class ImageLoader {
      * - Wraps IOException into an unchecked RuntimeException
      */
     public  static  BufferedImage loadImage(String imageName){
-        BufferedImage image;
+
         try {
             image= ImageIO.read(Objects.requireNonNull(ImageLoader.class.getResourceAsStream("/images/"+imageName)));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return image;
     }

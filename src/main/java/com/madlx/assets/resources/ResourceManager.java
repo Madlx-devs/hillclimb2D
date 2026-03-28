@@ -1,14 +1,11 @@
 package com.madlx.assets.resources;
 
-import com.madlx.ui.StartScreen;
 
-import java.awt.image.BufferedImage;
+import java.util.Map;
 
-import java.util.HashMap;
+public interface ResourceManager<T> {
 
-public class ResourceManager {
-
-    private HashMap<String , BufferedImage> images ;
-
+     void loadAll(String path);
+     Map<String ,T> getAssets();
 
 }

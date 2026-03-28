@@ -1,54 +1,67 @@
 package com.madlx;
 
+import com.madlx.assets.resources.ResourceManager;
+import com.madlx.assets.resources.VisualAssetLoader;
 import com.madlx.core.Game;
 import com.madlx.ui.MenuScreen;
 import com.madlx.ui.StartScreen;
+import com.madlx.ui.UiManager;
+import com.madlx.utils.exception.NoPanelExistException;
 
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
+
+
 /**
  * The main entry point for the Hill Climb 2D game.
  *
- * <p>Responsibilities:
- * - Initializes the main application window (JFrame) for the game.
- * - Loads and displays the initial UI screens (StartScreen, MenuScreen).
- * - Sets up basic JFrame properties: title, size, close operation, and visibility.</p>
  *
- * <p>Notes:
- * - Currently, this class is used primarily for testing UI loading.
- * - StartScreen and MenuScreen are instantiated here, but the switching
- *   mechanism between screens will be handled by the Game or UiManager classes later.
- * - This setup is temporary and intended to verify that UI components render correctly.</p>
  *
  * @author
- *   Madlx-devs
+ * Madlx-devs
+ *
  * @version
  *   1.0
  * @since
  *   2026-03-28
  */
-public class App 
-{    private Game game;
+public class App
+{
     public static void main( String[] args )
     {
-        new App();
+        new App().start();
     }
-   /*
-   * this is just for checking whether the ui is being loaded correctly or not
-   * it will be refactored once all the classes and dependencies are developed
-   * by the developer
-   *
-   **/
+
+    /**
+     * empty constructor to initialize the Main app class
+     * */
+
     public App(){
+
+    }
+
+
+
+
+
+    /**
+     * start method creates JFrame window and initialize it also creates the uiManager class the
+     * ui manager is responsible for managing the different scenes of the game like Menu Screen,
+     * GamePlay Screen ,Paused Scene ,etc
+     * */
+    public void start(){
         JFrame window = new JFrame("Hill climb 2D");
         window.setResizable(false);
-        StartScreen startScreen= new StartScreen();
-        MenuScreen menuScreen = new MenuScreen();
-       // window.add(startScreen);
-        window.add(menuScreen);
+        UiManager uiManager= new UiManager(window);
+        if(uiManager.getActiveWindow()!=null){
+            window.add(uiManager.getActiveWindow());
+        }
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
+
+
 }
