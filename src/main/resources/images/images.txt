@@ -2,6 +2,7 @@
 loadscreen.png
 menuScreen.png
 
+stopper
 // terrain
 classic.png
 highway.png
