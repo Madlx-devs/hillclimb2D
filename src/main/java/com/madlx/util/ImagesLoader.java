@@ -1,6 +1,7 @@
 package com.madlx.util;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,10 +11,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class ImagesLoader {
-
     private static ImagesLoader imagesLoader;
     private static final HashMap<String , BufferedImage> imageMap = new HashMap<>();
-
+    private static final HashMap<String,BufferedImage[]> stripMap=new HashMap<>();
     private ImagesLoader(){
         String IMAGE_FILES = "ims.txt";
         loadAll(IMAGE_FILES);
@@ -58,7 +58,6 @@ public class ImagesLoader {
     }
 
     public BufferedImage getImage(String imageName){
-
         return imageMap.get(imageName);
     }
 }
