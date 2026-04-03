@@ -47,7 +47,7 @@ public class ImagesLoader {
     }
 
     private BufferedImage loadImage(String imageName) {
-        BufferedImage image =null;
+        BufferedImage image;
         try {
             image =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/"+imageName)));
         }
