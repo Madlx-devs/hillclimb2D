@@ -1,7 +1,6 @@
 package com.madlx;
 
 import com.madlx.core.GameManager;
-import com.madlx.core.GamePanel;
 
 import javax.swing.*;
 
