@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
 
 public class Bike {
     int x,y;
-    private PhysicsEngine physicsEngine= PhysicsEngine.getInstance();
-    private BufferedImage image;
+    private final PhysicsEngine physicsEngine= PhysicsEngine.getInstance();
+    private final BufferedImage image;
 
     public Bike(){
         this.x=0;
