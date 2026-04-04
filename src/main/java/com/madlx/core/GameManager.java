@@ -6,10 +6,15 @@ import javax.swing.*;
 
 public class GameManager {
     private static  GameManager gameManager=null;
-    private UiManager uiManager;
+    private final GameState gameState;
+    private final UiManager uiManager;
 
+    public GameManager(){
+        uiManager=UiManager.getInstance();
+        gameState=GameState.MENU;
+    }
     public JPanel getDelegatedPanel(){
-        return  null;
+        return uiManager.UpdateUI(gameState);
     }
 
     public static GameManager getInstance(){

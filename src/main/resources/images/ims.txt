@@ -2,4 +2,6 @@ loadScreen.png
 menuScreen.png
 gameScreen.png
 bike.png
-coins.txt
+
+stopper
+coins.png

@@ -14,6 +14,9 @@ public class MenuScreen extends JPanel implements BaseScreen{
         this.setFocusable(true);
         this.requestFocusInWindow();
         img = ImagesLoader.getInstance().getImage("menuScreen.png");
+        this.setLayout(null);
+        this.add(new Button("start game"));
+
     }
     public static JPanel getInstance(){
         if (menuScreen == null) {

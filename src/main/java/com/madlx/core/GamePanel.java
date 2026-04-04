@@ -38,7 +38,6 @@ public class GamePanel  extends JPanel implements BaseScreen {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawString(String.valueOf(img.getWidth()),100,100);
         g2.drawImage(img,0,0,pWidth,pHeight,null);
         bike.draw(g2);
     }

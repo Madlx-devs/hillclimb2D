@@ -38,6 +38,10 @@ public class ImagesLoader {
                     if(line.isEmpty()){
                         continue;
                     }
+                    if(line.equals("stopper")){
+                        System.out.println("stopped");
+                        return;
+                    }
                     imageMap.put(line,loadImage(line));
                 }
             }
@@ -56,6 +60,7 @@ public class ImagesLoader {
         }
         return image;
     }
+
 
     public BufferedImage getImage(String imageName){
         return imageMap.get(imageName);
