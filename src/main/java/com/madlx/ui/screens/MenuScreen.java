@@ -1,5 +1,6 @@
 package com.madlx.ui.screens;
 
+import com.madlx.ui.buttons.CustomButtonCreator;
 import com.madlx.util.ImagesLoader;
 
 import javax.swing.*;
@@ -9,14 +10,16 @@ import java.awt.image.BufferedImage;
 public class MenuScreen extends JPanel implements BaseScreen{
     private static MenuScreen menuScreen;
     private static BufferedImage img;
+    private final CustomButtonCreator buttonCreator;
     private MenuScreen() {
         this.setPreferredSize(new Dimension(pWidth, pHeight));
         this.setFocusable(true);
         this.requestFocusInWindow();
+        buttonCreator=CustomButtonCreator.getInstance();
         img = ImagesLoader.getInstance().getImage("menuScreen.png");
-        this.setLayout(null);
-        this.add(new Button("start game"));
-
+        this.add(buttonCreator.createButton("play"));
+        this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+        this.add(buttonCreator.createButton("quit"));
     }
     public static JPanel getInstance(){
         if (menuScreen == null) {
