@@ -39,7 +39,6 @@ public class ImagesLoader {
                         continue;
                     }
                     if(line.equals("stopper")){
-                        System.out.println("stopped");
                         return;
                     }
                     imageMap.put(line,loadImage(line));

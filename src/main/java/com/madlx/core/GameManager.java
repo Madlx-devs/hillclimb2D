@@ -11,7 +11,7 @@ public class GameManager {
 
     public GameManager(){
         uiManager=UiManager.getInstance();
-        gameState=GameState.MENU;
+        gameState=GameState.LOADING;
     }
     public JPanel getDelegatedPanel(){
         return uiManager.UpdateUI(gameState);

@@ -8,6 +8,7 @@ public class DbConnection {
         try {
             Class.forName("org.sqlite.JDBC");
             System.out.println("Driver loaded");
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
