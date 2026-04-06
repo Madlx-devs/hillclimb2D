@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 public class MenuScreen extends JPanel implements BaseScreen, ActionListener {
 
     private static MenuScreen instance;
-    private BufferedImage background;
+    private final BufferedImage background;
 
     private MenuScreen() {
         setPreferredSize(new Dimension(pWidth, pHeight));

@@ -13,11 +13,11 @@ import java.util.List;
  */
 public class CustomButton extends JComponent {
 
-    private String label;
-    private Color baseColor;
+    private final String label;
+    private final Color baseColor;
     private boolean hovered = false;
     private boolean pressed = false;
-    private List<ActionListener> listeners = new ArrayList<>();
+    private final List<ActionListener> listeners = new ArrayList<>();
 
     public CustomButton(String label, Color baseColor) {
         this.label = label;

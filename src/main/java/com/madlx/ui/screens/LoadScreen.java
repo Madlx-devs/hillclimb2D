@@ -15,7 +15,7 @@ public class LoadScreen extends JPanel implements BaseScreen {
     private static LoadScreen loadScreen;
     private final BufferedImage img;
     private final LoadingManager loading;
-    private Timer t;
+    private final Timer t;
 
 
     private LoadScreen() {
@@ -37,9 +37,9 @@ public class LoadScreen extends JPanel implements BaseScreen {
         }
         return loadScreen;
         }
-        public void reset(){
+        /*public void reset(){
         loadScreen=null;
-        }
+        }*/
 
     @Override
     public void paintComponent(Graphics g) {

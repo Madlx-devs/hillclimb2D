@@ -8,7 +8,6 @@ import com.madlx.ui.screens.MenuScreen;
 import javax.swing.*;
 
 public class UiManager {
-    private static  UiManager uiManager;
     private UiManager(){
 
     }
