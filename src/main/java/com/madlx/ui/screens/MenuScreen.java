@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 public class  MenuScreen extends JPanel implements BaseScreen{
     private static MenuScreen menuScreen;
     private static BufferedImage img;
-
     private MenuScreen() {
         this.setPreferredSize(new Dimension(pWidth, pHeight));
         this.setFocusable(true);
@@ -18,7 +17,7 @@ public class  MenuScreen extends JPanel implements BaseScreen{
         img = ImagesLoader.getInstance().getImage("menuScreen.png");
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
     }
-    public static JPanel getInstance(GameState gameState){
+    public static JPanel getInstance( ){
         if (menuScreen == null) {
             menuScreen=new MenuScreen();
         }

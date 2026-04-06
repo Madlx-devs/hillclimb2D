@@ -1,5 +1,6 @@
 package com.madlx.ui.screens;
 
+import com.madlx.core.GameManager;
 import com.madlx.core.GameState;
 import com.madlx.ui.UiManager;
 import com.madlx.util.ImagesLoader;
@@ -15,12 +16,12 @@ public class LoadScreen extends JPanel implements BaseScreen {
     private final LoadingManager loading;
 
 
-    private LoadScreen(GameState gameState) {
+    private LoadScreen() {
         this.setPreferredSize(new Dimension(pWidth, pHeight));
         this.setFocusable(true);
         this.requestFocusInWindow();
 
-        loading=new LoadingManager(gameState);
+        loading=new LoadingManager();
         img = ImagesLoader.getInstance().getImage("loadScreen.png");
         Timer t = new Timer(1000/10,e->{
             update();
@@ -28,9 +29,9 @@ public class LoadScreen extends JPanel implements BaseScreen {
         });
         t.start();
     }
-    public static JPanel getInstance(GameState gameState ){
+    public static JPanel getInstance( ){
         if (loadScreen == null) {
-            loadScreen=new LoadScreen(gameState);
+            loadScreen=new LoadScreen();
         }
         return loadScreen;
         }
@@ -51,10 +52,8 @@ public class LoadScreen extends JPanel implements BaseScreen {
     static class LoadingManager{
         private  final int height=20;
         private   int blockWidth=0;
-        private boolean isLoaded=false;
-        private  GameState gameState;
-        public LoadingManager(GameState gameState){
-            this.gameState=gameState;
+
+        public LoadingManager( ){
         }
         private void update(){
 
@@ -62,9 +61,8 @@ public class LoadScreen extends JPanel implements BaseScreen {
                 blockWidth+=10;
             }
             if(blockWidth==200){
-                isLoaded=true;
-                gameState=GameState.MENU;
-                UiManager.UpdateUI(gameState);
+                boolean isLoaded = true;
+                GameManager.SetGameState(GameState.MENU);
             }
         }
         public void draw(Graphics2D g2){
