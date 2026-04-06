@@ -1,6 +1,7 @@
 package com.madlx.ui.screens;
 
 import com.madlx.core.GameState;
+import com.madlx.ui.UiManager;
 import com.madlx.util.ImagesLoader;
 
 import javax.swing.*;
@@ -10,14 +11,16 @@ import java.awt.image.BufferedImage;
 public class LoadScreen extends JPanel implements BaseScreen {
 
     private static LoadScreen loadScreen;
-    private BufferedImage img;
-    private LoadingManager loading;
+    private final BufferedImage img;
+    private final LoadingManager loading;
 
-    private LoadScreen() {
+
+    private LoadScreen(GameState gameState) {
         this.setPreferredSize(new Dimension(pWidth, pHeight));
         this.setFocusable(true);
         this.requestFocusInWindow();
-        loading=new LoadingManager();
+
+        loading=new LoadingManager(gameState);
         img = ImagesLoader.getInstance().getImage("loadScreen.png");
         Timer t = new Timer(1000/10,e->{
             update();
@@ -25,9 +28,9 @@ public class LoadScreen extends JPanel implements BaseScreen {
         });
         t.start();
     }
-    public static JPanel getInstance( ){
+    public static JPanel getInstance(GameState gameState ){
         if (loadScreen == null) {
-            loadScreen=new LoadScreen();
+            loadScreen=new LoadScreen(gameState);
         }
         return loadScreen;
         }
@@ -46,25 +49,22 @@ public class LoadScreen extends JPanel implements BaseScreen {
     }
 
     static class LoadingManager{
-        private  int count =1;
         private  final int height=20;
         private   int blockWidth=0;
         private boolean isLoaded=false;
-        private GameState gs;
-        public LoadingManager(){
-
+        private  GameState gameState;
+        public LoadingManager(GameState gameState){
+            this.gameState=gameState;
         }
         private void update(){
+
+            if(blockWidth!=200){
+                blockWidth+=10;
+            }
             if(blockWidth==200){
                 isLoaded=true;
-                if(isLoaded){
-                    System.out.println("loaded");
-                    gs=GameState.MENU;
-                }
-            }
-            if(blockWidth<=200){
-                System.out.println(blockWidth);
-                blockWidth+=blockWidth+10;
+                gameState=GameState.MENU;
+                UiManager.UpdateUI(gameState);
             }
         }
         public void draw(Graphics2D g2){
@@ -73,6 +73,5 @@ public class LoadScreen extends JPanel implements BaseScreen {
             g2.setColor(Color.WHITE);
             g2.fillRoundRect(pWidth/2-(pWidth/10), pHeight/2+(pHeight/4),blockWidth,height,20,20);
         }
-
     }
 }

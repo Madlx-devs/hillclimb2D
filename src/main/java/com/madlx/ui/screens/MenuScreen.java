@@ -1,5 +1,6 @@
 package com.madlx.ui.screens;
 
+import com.madlx.core.GameState;
 import com.madlx.util.ImagesLoader;
 
 import javax.swing.*;
@@ -17,7 +18,7 @@ public class  MenuScreen extends JPanel implements BaseScreen{
         img = ImagesLoader.getInstance().getImage("menuScreen.png");
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
     }
-    public static JPanel getInstance(){
+    public static JPanel getInstance(GameState gameState){
         if (menuScreen == null) {
             menuScreen=new MenuScreen();
         }

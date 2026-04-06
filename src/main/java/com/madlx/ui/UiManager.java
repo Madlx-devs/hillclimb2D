@@ -12,12 +12,12 @@ public class UiManager {
     private UiManager(){
 
     }
-    public JPanel UpdateUI(GameState gameState){
+    public static JPanel UpdateUI(GameState gameState){
         switch (gameState){
             case MENU:
-                return MenuScreen.getInstance();
+                 return MenuScreen.getInstance(gameState);
             case LOADING:
-                return LoadScreen.getInstance();
+                return LoadScreen.getInstance(gameState);
             case PAUSED:
                 break;
             case PLAYING:
