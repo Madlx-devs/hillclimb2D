@@ -3,7 +3,6 @@ package com.madlx.core;
 import com.madlx.ui.UiManager;
 
 import javax.swing.*;
-import java.util.Objects;
 
 /** *
  * this will be responsible for handling the ui manager
@@ -11,15 +10,9 @@ import java.util.Objects;
 
 public class GameManager {
     public  static GameManager gameManager=null;
-    public static GameState gameState;
-    private GameManager(){
-    }
+    public static GameState gameState=null;
 
-    public JPanel GetCurrentPanel(){
-        if(gameState==null){
-           return UiManager.UpdateUI(GameState.LOADING);
-        }
-        return UiManager.UpdateUI(gameState);
+    private GameManager(){
     }
 
     public static GameManager getInstance() {
@@ -28,8 +21,22 @@ public class GameManager {
         }
         return gameManager;
     }
-    public static void SetGameState(GameState newState){
+
+    public JPanel GetCurrentPanel(){
+        if(gameState==null){
+            return UiManager.UpdateUI(GameState.LOADING);
+        }
+        return UiManager.UpdateUI(gameState);
+    }
+
+    public static void setGameState(GameState newState){
+        if(newState==null){
+            throw new IllegalArgumentException("gameState cannot be null");
+        }
         gameState= newState;
     }
 
+    public static GameState getGameState(){
+        return gameState;
+    }
 }

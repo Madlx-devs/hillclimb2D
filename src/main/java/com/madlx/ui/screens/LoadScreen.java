@@ -1,8 +1,9 @@
 package com.madlx.ui.screens;
 
+import com.madlx.App;
 import com.madlx.core.GameManager;
 import com.madlx.core.GameState;
-import com.madlx.ui.UiManager;
+
 import com.madlx.util.ImagesLoader;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class LoadScreen extends JPanel implements BaseScreen {
     private static LoadScreen loadScreen;
     private final BufferedImage img;
     private final LoadingManager loading;
+    private Timer t;
 
 
     private LoadScreen() {
@@ -23,7 +25,7 @@ public class LoadScreen extends JPanel implements BaseScreen {
 
         loading=new LoadingManager();
         img = ImagesLoader.getInstance().getImage("loadScreen.png");
-        Timer t = new Timer(1000/10,e->{
+         t = new Timer(1000/10,e->{
             update();
             repaint();
         });
@@ -35,7 +37,11 @@ public class LoadScreen extends JPanel implements BaseScreen {
         }
         return loadScreen;
         }
+        public void reset(){
+        loadScreen=null;
+        }
 
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 =(Graphics2D) g;
@@ -47,29 +53,40 @@ public class LoadScreen extends JPanel implements BaseScreen {
     }
     public void update() {
         loading.update();
+        if(loading.isFinished()){
+            t.stop();
+           try {
+               Thread.sleep(100);
+               GameManager.setGameState(GameState.MENU);
+               App.switchPanel(GameManager.getInstance().GetCurrentPanel());
+           } catch (InterruptedException e) {
+               throw new RuntimeException(e);
+           }
+        }
     }
 
     static class LoadingManager{
-        private  final int height=20;
-        private   int blockWidth=0;
+        private static final int HEIGHT=20;
+        private static final int STEP =10;
+        private static final int MAX_WIDTH=200;
+        private  int blockWidth=0;
 
-        public LoadingManager( ){
+        public LoadingManager(){
         }
         private void update(){
 
-            if(blockWidth!=200){
-                blockWidth+=10;
+            if(blockWidth<MAX_WIDTH){
+                blockWidth+=STEP;
             }
-            if(blockWidth==200){
-                boolean isLoaded = true;
-                GameManager.SetGameState(GameState.MENU);
-            }
+        }
+        private boolean isFinished(){
+            return blockWidth>=MAX_WIDTH;
         }
         public void draw(Graphics2D g2){
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
             g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
             g2.setColor(Color.WHITE);
-            g2.fillRoundRect(pWidth/2-(pWidth/10), pHeight/2+(pHeight/4),blockWidth,height,20,20);
+            g2.fillRoundRect(pWidth/2-(pWidth/10), pHeight/2+(pHeight/4),blockWidth,HEIGHT,20,20);
         }
     }
 }

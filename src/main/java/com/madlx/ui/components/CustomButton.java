@@ -46,8 +46,8 @@ public class CustomButton extends JComponent {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        final int w =100;
-        final int h = 30;
+        final int w =getWidth();
+        final int h = getHeight();
         final int arc = 20; // fully rounded ends
         int shadowOffset = 3;
         int borderThickness = 2;
