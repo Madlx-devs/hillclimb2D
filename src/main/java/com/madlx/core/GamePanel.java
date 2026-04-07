@@ -1,24 +1,28 @@
 package com.madlx.core;
 
 import com.madlx.entities.Bike;
+import com.madlx.input.BikeHandler;
 import com.madlx.ui.screens.BaseScreen;
 import com.madlx.util.ImagesLoader;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class GamePanel  extends JPanel implements BaseScreen {
     private static  GamePanel gamePanel;
     private final BufferedImage img;
     private final Bike bike ;
-
+    private final BikeHandler bikeHandler;
     private GamePanel(){
         this.setPreferredSize(new Dimension(pWidth, pHeight));
         this.setFocusable(true);
-        this.requestFocusInWindow();
+        this.requestFocus();
         this.setDoubleBuffered(true);
         bike = new Bike();
+        bikeHandler = BikeHandler.getInstance();
+        this.addKeyListener(bikeHandler);
         img= ImagesLoader.getInstance().getImage("gameScreen.png");
         Timer t = new Timer(40,e -> {
             update();
@@ -43,6 +47,7 @@ public class GamePanel  extends JPanel implements BaseScreen {
     }
 
     public void update(){
-        bike.update();
-    }
+        bike.update(bikeHandler.throttlePressed);
+
+        }
 }

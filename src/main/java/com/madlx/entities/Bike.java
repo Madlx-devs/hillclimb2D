@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Bike {
+public class Bike  {
     int x,y;
     private final PhysicsEngine physicsEngine= PhysicsEngine.getInstance();
     private final BufferedImage image;
@@ -25,13 +25,14 @@ public class Bike {
         g2.drawImage(image,x,y,100,100,null);
     }
 
-    public void update(){
-        if(x>1080){
-            x=0;
+    public void update(boolean throttlePressed){
+        if(throttlePressed){
+            physicsEngine.throttle();
         }
         else{
-            x+=10;
+            physicsEngine.applyBrake();
         }
+
     }
 }
 

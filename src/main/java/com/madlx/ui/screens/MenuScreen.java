@@ -73,14 +73,16 @@ public class MenuScreen extends JPanel implements BaseScreen, ActionListener {
             case "PLAY":
                 GameManager.setGameState(GameState.PLAYING);
                 App.switchPanel(GameManager.getInstance().GetCurrentPanel());
-                System.out.println(GameManager.getGameState());
                 break;
             case "SETTING":
                 GameManager.setGameState(GameState.FINISHED);
+                App.switchPanel(GameManager.getInstance().GetCurrentPanel());
                 break;
             case "QUIT":
                 System.exit(0);
                 break;
+            case "GAME_OVER":
+                System.out.println("game over");
         }
     }
 }

@@ -3,6 +3,7 @@ package com.madlx.core;
 import com.madlx.ui.UiManager;
 
 import javax.swing.*;
+import java.awt.*;
 
 /** *
  * this will be responsible for handling the ui manager
@@ -11,8 +12,10 @@ import javax.swing.*;
 public class GameManager {
     public  static GameManager gameManager=null;
     public static GameState gameState=null;
-
+    private JPanel container;
     private GameManager(){
+
+
     }
 
     public static GameManager getInstance() {

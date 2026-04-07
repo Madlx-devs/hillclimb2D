@@ -14,18 +14,12 @@ public class PhysicsEngine {
         }
         return instance;
     }
-    public void changeMotion(){
 
-    }
-    public float changeGravity(){
-    return 2f;
-    }
-
-    public double throttle(){
-        initialAngle-=rotateAngle;
-        return initialAngle;
+    public void throttle(){
+         initialAngle+=rotateAngle;
+        System.out.println("throttled");
     }
     public void applyBrake(){
-
+        initialAngle-=rotateAngle;
     }
 }

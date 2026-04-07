@@ -1,6 +1,7 @@
 package com.madlx;
 
 import com.madlx.core.GameManager;
+import com.madlx.core.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +36,7 @@ public class App
                 container.repaint();
                 if (frame != null) frame.pack();
                 frame.setLocationRelativeTo(null);
+                panel.requestFocus();
             }
         });
     }
