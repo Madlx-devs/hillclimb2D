@@ -34,8 +34,10 @@ public class App
                 container.add(panel, BorderLayout.CENTER);
                 container.revalidate();
                 container.repaint();
-                if (frame != null) frame.pack();
-                frame.setLocationRelativeTo(null);
+                if (frame != null) {
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                }
                 panel.requestFocus();
             }
         });

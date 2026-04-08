@@ -1,5 +1,7 @@
 package com.madlx.entities;
 
+import com.madlx.core.GamePanel;
+import com.madlx.input.BikeHandler;
 import com.madlx.physics.PhysicsEngine;
 import com.madlx.util.ImagesLoader;
 
@@ -25,11 +27,15 @@ public class Bike  {
         g2.drawImage(image,x,y,100,100,null);
     }
 
-    public void update(boolean throttlePressed){
-        if(throttlePressed){
+    public void update(){
+        if(BikeHandler.getInstance().throttlePressed){
+            x+=10;
+            if(x> GamePanel.pWidth){
+                x=0;
+            }
             physicsEngine.throttle();
         }
-        else{
+        if(BikeHandler.getInstance().brakesApplied){
             physicsEngine.applyBrake();
         }
 

@@ -17,7 +17,7 @@ public class PhysicsEngine {
 
     public void throttle(){
          initialAngle+=rotateAngle;
-        System.out.println("throttled");
+
     }
     public void applyBrake(){
         initialAngle-=rotateAngle;

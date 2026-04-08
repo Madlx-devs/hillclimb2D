@@ -1,7 +1,7 @@
-loadScreen.png
-menuScreen.png
-gameScreen.png
-bike.png
-
+o loadScreen.png
+o menuScreen.png
+o gameScreen.png
+o bike.png
+n brakePaddles.png 2
 stopper
 coins.png

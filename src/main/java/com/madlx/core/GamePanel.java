@@ -47,7 +47,7 @@ public class GamePanel  extends JPanel implements BaseScreen {
     }
 
     public void update(){
-        bike.update(bikeHandler.throttlePressed);
+        bike.update();
 
         }
 }

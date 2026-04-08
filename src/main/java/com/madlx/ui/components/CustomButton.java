@@ -91,7 +91,7 @@ public class CustomButton extends JComponent {
         }
         // 5. Label
         g2.setColor(Color.WHITE);
-        g2.setFont(new Font("Arial", Font.BOLD, 20));
+        g2.setFont(FontLoader.getFont());
         FontMetrics fm = g2.getFontMetrics();
         int tx = (w - shadowOffset - fm.stringWidth(label)) / 2;
         int ty = (h + fm.getAscent() - fm.getDescent()) / 2;
