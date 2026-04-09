@@ -15,11 +15,18 @@ public class PhysicsEngine {
         return instance;
     }
 
-    public void throttle(){
-         initialAngle+=rotateAngle;
+    public double throttle(){
+         if (initialAngle>-360 && initialAngle<360){
+             initialAngle+=rotateAngle;
+         }
+         return initialAngle;
 
     }
-    public void applyBrake(){
+    public double applyBrake(){
+        if(initialAngle>-360 && initialAngle<360){
         initialAngle-=rotateAngle;
+        }
+        return initialAngle;
     }
+
 }

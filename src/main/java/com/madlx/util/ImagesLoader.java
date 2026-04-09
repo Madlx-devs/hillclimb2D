@@ -70,7 +70,7 @@ public class ImagesLoader {
         BufferedImage[] images = new BufferedImage[count];
         BufferedImage image= getImage(name);
         int newWidth =image.getWidth()/count;
-         BufferedImage newImage = createImage(image.getHeight(),newWidth);
+        BufferedImage newImage = createImage(image.getHeight(),newWidth);
         Arrays.fill(images, newImage);
         return images;
     }
