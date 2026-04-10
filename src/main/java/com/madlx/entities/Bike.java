@@ -25,8 +25,6 @@ public class Bike  {
         g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
         g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,RenderingHints.VALUE_STROKE_PURE);
         g2.drawImage(image,x,y,100,100,null);
-        g2.rotate(Math.toRadians(physicsEngine.throttle()),0,0);
-        g2.rotate(Math.toRadians(physicsEngine.applyBrake()),0,0);
     }
 
     public void update(){

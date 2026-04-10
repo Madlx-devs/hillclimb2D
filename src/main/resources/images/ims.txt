@@ -2,6 +2,6 @@ o loadScreen.png
 o menuScreen.png
 o gameScreen.png
 o bike.png
-n brakePaddles.png 2
+n brakePaddle.png 2
 stopper
 coins.png

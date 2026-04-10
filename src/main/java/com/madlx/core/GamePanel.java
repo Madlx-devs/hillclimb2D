@@ -2,12 +2,13 @@ package com.madlx.core;
 
 import com.madlx.entities.Bike;
 import com.madlx.input.BikeHandler;
+import com.madlx.ui.asset.BrakeButton;
 import com.madlx.ui.screens.BaseScreen;
 import com.madlx.util.ImagesLoader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
+
 import java.awt.image.BufferedImage;
 
 public class GamePanel  extends JPanel implements BaseScreen {
@@ -15,6 +16,7 @@ public class GamePanel  extends JPanel implements BaseScreen {
     private final BufferedImage img;
     private final Bike bike ;
     private final BikeHandler bikeHandler;
+    private final BrakeButton brake;
     private GamePanel(){
         this.setPreferredSize(new Dimension(pWidth, pHeight));
         this.setFocusable(true);
@@ -23,6 +25,7 @@ public class GamePanel  extends JPanel implements BaseScreen {
         bike = new Bike();
         bikeHandler = BikeHandler.getInstance();
         this.addKeyListener(bikeHandler);
+        this.brake= new BrakeButton();
         img= ImagesLoader.getInstance().getImage("gameScreen.png");
         Timer t = new Timer(40,e -> {
             update();
@@ -44,10 +47,11 @@ public class GamePanel  extends JPanel implements BaseScreen {
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(img,0,0,pWidth,pHeight,null);
         bike.draw(g2);
+        brake.draw(g2);
+
     }
 
     public void update(){
         bike.update();
-
         }
 }

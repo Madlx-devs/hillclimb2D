@@ -16,9 +16,8 @@ public class ImagesLoader {
     private static final HashMap<String , BufferedImage> imageMap = new HashMap<>();
     private static final HashMap<String,BufferedImage[]> stripMap=new HashMap<>();
     private ImagesLoader(){
-        String IMAGE_FILES = "ims.txt";
+       final String IMAGE_FILES = "ims.txt";
         loadAll(IMAGE_FILES);
-
     }
     public static ImagesLoader getInstance(){
         if (imagesLoader == null) {
@@ -44,14 +43,14 @@ public class ImagesLoader {
                     imageMap.put(line.substring(2),loadImage(line.substring(2)));
                 }
                 if(line.startsWith("n")){
-                    stripMap.put(line.substring(2),getStripes(line.substring(2),line.charAt(line.length()-1)));
+                    String name = line.substring(2,line.length()-2);
+                    stripMap.put(name, loadStripes(name,Integer.parseInt(line.substring(line.length()-1))));
                 }
             }
             }
-
         }
         catch (Exception e){
-            System.out.println("cannot find image file");
+            System.out.println("cannot find image file"+ e.getMessage());
         }
     }
 
@@ -66,13 +65,16 @@ public class ImagesLoader {
         return image;
     }
 
-    private BufferedImage[] getStripes(String name,int count ){
-        BufferedImage[] images = new BufferedImage[count];
-        BufferedImage image= getImage(name);
-        int newWidth =image.getWidth()/count;
-        BufferedImage newImage = createImage(image.getHeight(),newWidth);
-        Arrays.fill(images, newImage);
-        return images;
+    public BufferedImage[] loadStripes(String name, int count ){
+            BufferedImage spriteSheet = this.loadImage(name);
+            int frameWidth = spriteSheet.getWidth() / count;
+            int frameHeight = spriteSheet.getHeight();
+            BufferedImage[] frames = new BufferedImage[count];
+            for (int i = 0; i < count; i++) {
+                frames[i] = spriteSheet.getSubimage(
+                        i * frameWidth, 0, frameWidth, frameHeight);
+            }
+            return frames;
     }
 
     public BufferedImage getImage(String imageName){
@@ -80,5 +82,9 @@ public class ImagesLoader {
     }
     private BufferedImage createImage(int height,int width){
         return new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+    }
+
+    public BufferedImage[] getStripes(String name){
+        return stripMap.get(name);
     }
 }
